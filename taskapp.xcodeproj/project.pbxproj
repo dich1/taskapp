@@ -12,6 +12,7 @@
 		42B2892E1E45FA0300DE6A88 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B2892C1E45FA0300DE6A88 /* Main.storyboard */; };
 		42B289301E45FA0300DE6A88 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B2892F1E45FA0300DE6A88 /* Assets.xcassets */; };
 		42B289331E45FA0300DE6A88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42B289311E45FA0300DE6A88 /* LaunchScreen.storyboard */; };
+		42EAD1E01E50161F00B15564 /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EAD1DF1E50161F00B15564 /* InputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		42B2892F1E45FA0300DE6A88 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42B289321E45FA0300DE6A88 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		42B289341E45FA0300DE6A88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		42EAD1DF1E50161F00B15564 /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				42B289281E45FA0300DE6A88 /* AppDelegate.swift */,
 				42B2892A1E45FA0300DE6A88 /* ViewController.swift */,
 				42B2892C1E45FA0300DE6A88 /* Main.storyboard */,
+				42EAD1DF1E50161F00B15564 /* InputViewController.swift */,
 				42B2892F1E45FA0300DE6A88 /* Assets.xcassets */,
 				42B289311E45FA0300DE6A88 /* LaunchScreen.storyboard */,
 				42B289341E45FA0300DE6A88 /* Info.plist */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42EAD1E01E50161F00B15564 /* InputViewController.swift in Sources */,
 				42B2892B1E45FA0300DE6A88 /* ViewController.swift in Sources */,
 				42B289291E45FA0300DE6A88 /* AppDelegate.swift in Sources */,
 			);
@@ -261,6 +265,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V79DCJFQ7R;
 				INFOPLIST_FILE = taskapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.daichi.ito.taskapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -274,6 +279,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = V79DCJFQ7R;
 				INFOPLIST_FILE = taskapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.daichi.ito.taskapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -300,6 +306,7 @@
 				42B289391E45FA0300DE6A88 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
