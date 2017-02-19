@@ -15,7 +15,7 @@ class InputViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contentsTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var categoryPicker: UIPickerView!
+    @IBOutlet weak var categoryTextField: UITextField!
     
     var task: Task!
     let realm = try! Realm()
@@ -30,6 +30,7 @@ class InputViewController: UIViewController {
         titleTextField.text = task.title
         contentsTextView.text = task.contents
         datePicker.date = task.date as Date
+        categoryTextField.text = task.category
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,10 +40,12 @@ class InputViewController: UIViewController {
     
     // 遷移直前に読まれる
     override func viewWillDisappear(_ animated: Bool) {
+        // 内容を保存する
         try! realm.write {
             self.task.title = self.titleTextField.text!
             self.task.contents = self.contentsTextView.text
             self.task.date = self.datePicker.date as NSDate
+            self.task.category = self.categoryTextField.text!
             self.realm.add(self.task, update: true)
         }
         

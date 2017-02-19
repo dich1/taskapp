@@ -10,15 +10,15 @@ import UIKit
 import RealmSwift
 import UserNotifications
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var seachBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // 個別のデータ読み書き用
     let realm = try! Realm()
     
     // 一覧データ用
-    let taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending: false)
+    var taskArray = try! Realm().objects(Task.self).sorted(byProperty: "date", ascending: false)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,5 +149,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    
+    /**
+     * searchボタン押下時
+     * @param searchBar
+     */
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+        taskArray = try! Realm().objects(Task.self).filter("category BEGINSWITH[c] %@", searchBar.text!)
+        tableView.reloadData()
+    }
+    
 }
 
