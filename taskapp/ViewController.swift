@@ -24,6 +24,7 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +65,8 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         
         let dateString: String = formatter.string(from: task.date as Date)
-        cell.detailTextLabel?.text = dateString
+        cell.detailTextLabel?.text = dateString + " : " + task.category
+        
         
         return cell
     }
@@ -91,7 +93,7 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
     
     /**
      * UITableViewDelegateプロトコルのメソッド
-     * セルが削除可能なことを伝えるメソッド
+     * 削除ボタン押下時に呼ばれるメソッド
      * @param tableView
      * @param editingStyle
      * @param indexPath
@@ -151,13 +153,21 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
     }
     
     /**
+     * テキスト変更時
+     * @param searchBar
+     */
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        taskArray = try! Realm().objects(Task.self).filter("category CONTAINS[c] %@", searchBar.text!)
+        tableView.reloadData()
+    }
+    
+    
+    /**
      * searchボタン押下時
      * @param searchBar
      */
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
-        taskArray = try! Realm().objects(Task.self).filter("category BEGINSWITH[c] %@", searchBar.text!)
-        tableView.reloadData()
     }
     
 }
