@@ -67,7 +67,6 @@ class ViewController: UIViewController, UITableViewDelegate, UISearchBarDelegate
         let dateString: String = formatter.string(from: task.date as Date)
         cell.detailTextLabel?.text = dateString + " : " + task.category
         
-        
         return cell
     }
     
