@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -39,7 +40,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      * データの数(=セルの数)を返すメソッド
      * @param tableView
      * @param section
-     **/
+     */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return taskArray.count
     }
@@ -72,7 +73,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      * 各セルを選択した時に実行されるメソッド
      * @param tableView
      * @param indexPath
-     **/
+     */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "cellSegue", sender: nil)
     }
@@ -82,7 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      * セルが削除可能なことを伝えるメソッド
      * @param tableView
      * @param indexPath
-     **/
+     */
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return UITableViewCellEditingStyle.delete
     }
@@ -93,13 +94,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
      * @param tableView
      * @param editingStyle
      * @param indexPath
-     **/
+     */
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            // 削除されたタスクを取得
+            let task = self.taskArray[indexPath.row]
+            
+            // ローカル通知をキャンセル
+            let center = UNUserNotificationCenter.current()
+            center.removePendingNotificationRequests(withIdentifiers: [String(task.id)])
+            
             // データベースから削除
             try! realm.write {
                 self.realm.delete(self.taskArray[indexPath.row])
                 tableView.deleteRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.fade)
+            }
+            
+            // 未通知のローカル通知一覧出力
+            center.getPendingNotificationRequests { (requests: [UNNotificationRequest]) in
+                for request in requests {
+                    print("/---------------")
+                    print(request)
+                    print("---------------/")
+                }
             }
         }
     }

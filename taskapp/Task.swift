@@ -12,9 +12,9 @@ class Task: Object {
     // id
     dynamic var id = 0
     // タイトル
-    dynamic var title = "hage"
+    dynamic var title = ""
     // 内容
-    dynamic var contents = "hage"
+    dynamic var contents = ""
     // 日時
     dynamic var date = NSDate()
     
