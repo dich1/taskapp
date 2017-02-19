@@ -51,11 +51,17 @@
                                     <!--2017-02-12 10:22:42 +0000-->
                                 </date>
                             </datePicker>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIu-Wl-a8f">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="rRQ-CK-FbU"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Dnu-Mr-BZb" firstAttribute="leading" secondItem="qpi-aT-4qU" secondAttribute="leadingMargin" id="5rk-f2-UwS"/>
                             <constraint firstItem="Dnu-Mr-BZb" firstAttribute="top" secondItem="Tn8-rK-eDS" secondAttribute="bottom" constant="10" id="7vh-qq-moa"/>
+                            <constraint firstItem="gIu-Wl-a8f" firstAttribute="trailing" secondItem="8UH-9Q-P5o" secondAttribute="trailing" id="A81-ZM-LXF"/>
                             <constraint firstItem="wcE-xu-THH" firstAttribute="leading" secondItem="qpi-aT-4qU" secondAttribute="leadingMargin" id="AIK-tp-fFK"/>
                             <constraint firstItem="uCt-At-RmJ" firstAttribute="top" secondItem="wcE-xu-THH" secondAttribute="bottom" constant="10" id="HbO-WR-v5n"/>
                             <constraint firstAttribute="trailing" secondItem="8UH-9Q-P5o" secondAttribute="trailing" id="LFO-fc-FJ8"/>
@@ -67,9 +73,12 @@
                             <constraint firstItem="8UH-9Q-P5o" firstAttribute="leading" secondItem="qpi-aT-4qU" secondAttribute="leading" id="lH1-BS-iVG"/>
                             <constraint firstItem="rjI-M3-TY5" firstAttribute="top" secondItem="uCt-At-RmJ" secondAttribute="bottom" constant="10" id="skH-f5-xES"/>
                             <constraint firstItem="rjI-M3-TY5" firstAttribute="leading" secondItem="qpi-aT-4qU" secondAttribute="leadingMargin" id="u89-KZ-Qwk"/>
+                            <constraint firstItem="gIu-Wl-a8f" firstAttribute="top" secondItem="8UH-9Q-P5o" secondAttribute="bottom" constant="10" id="x7z-am-EZx"/>
+                            <constraint firstItem="gIu-Wl-a8f" firstAttribute="leading" secondItem="8UH-9Q-P5o" secondAttribute="leading" id="z9z-MP-c17"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="categoryPicker" destination="gIu-Wl-a8f" id="LMQ-Du-uHb"/>
                         <outlet property="contentsTextView" destination="rjI-M3-TY5" id="sxA-iB-yL2"/>
                         <outlet property="datePicker" destination="8UH-9Q-P5o" id="IEh-7j-3dp"/>
                         <outlet property="titleTextField" destination="wcE-xu-THH" id="TL8-Ei-OrF"/>
@@ -93,23 +102,26 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fun-dn-Qgn">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="558" id="EKP-2r-1dr"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationLevel="-1" indentationWidth="10" reuseIdentifier="Cell" textLabel="AgJ-wD-Yaf" detailTextLabel="vD4-XF-j42" style="IBUITableViewCellStyleSubtitle" id="kEb-xi-u1U">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kEb-xi-u1U" id="CUo-Gd-hMp">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AgJ-wD-Yaf">
-                                                    <frame key="frameInset" minX="15" minY="5" width="33.5" height="20.5"/>
+                                                    <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vD4-XF-j42">
-                                                    <frame key="frameInset" minX="15" minY="25.5" width="44" height="14.5"/>
+                                                    <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -120,12 +132,17 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wc0-Th-RJq">
+                                <frame key="frameInset" minY="64" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fun-dn-Qgn" secondAttribute="bottom" id="IZM-Xn-9iB"/>
+                            <constraint firstItem="fun-dn-Qgn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="45" id="MY4-vx-dTz"/>
                             <constraint firstAttribute="trailing" secondItem="fun-dn-Qgn" secondAttribute="trailing" id="NSk-Lj-eK4"/>
-                            <constraint firstItem="fun-dn-Qgn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="OwX-JJ-RHO"/>
                             <constraint firstItem="fun-dn-Qgn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VVx-W7-PMp"/>
                         </constraints>
                     </view>
@@ -137,6 +154,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="seachBar" destination="Wc0-Th-RJq" id="t0i-DA-Ydm"/>
                         <outlet property="tableView" destination="fun-dn-Qgn" id="jjg-eo-VBU"/>
                         <segue destination="Q78-zi-fR6" kind="show" identifier="cellSegue" id="Qoh-4y-4wt"/>
                     </connections>

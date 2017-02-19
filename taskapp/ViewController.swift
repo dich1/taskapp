@@ -12,6 +12,7 @@ import UserNotifications
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var seachBar: UISearchBar!
     
     // 個別のデータ読み書き用
     let realm = try! Realm()
